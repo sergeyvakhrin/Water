@@ -1,0 +1,107 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ecomirc</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+
+<header data-bs-theme="dark">
+    {% include 'water/includes/inc_menu.html' %}
+</header>
+
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <h5 class="my-0 mr-md-auto font-weight-normal"></h5>
+
+</div>
+
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    {% if request.path == "/" %}
+        <h1 class="display-4">Родник здоровья</h1>
+        <p class="lead">Родник здоровья - это отличный вариант пополнить запасы пресной воды</p>
+        <p class="lead">Количество рассылок всего: {{ mailings_list.count }}, Kоличество активных рассылок: {{ mailings_is_published.count }}, Kоличество уникальных клиентов для рассылок: {{ clients_list.count }} </p>
+    {% endif %}
+    {% if user.is_authenticated %}
+        {% if perms.mailing.add_message %}
+            <a class="btn btn-primary" href="#" role="button">Создать Сообщение</a>
+        {% endif %}
+        {% if perms.mailing.add_mailing %}
+            <a class="btn btn-primary" href="#" role="button">Создать Рассылку</a>
+        {% endif %}
+        {% if perms.mailing.add_client %}
+            <a class="btn btn-primary" href="#" role="button">Добавить Клиента</a>
+        {% endif %}
+    {% endif %}
+</div>
+
+
+{% block content %}
+{% endblock %}
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+<div class="row">
+    <div class="col-12">
+        <head>
+            <title>Пример с интерактивной картой в определенном контейнере с назначенными размерами</title>
+            <script type="text/javascript" charset="utf-8"
+                    src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad797e69469bb90cba3edf599853bc1c3de8f8d4ef008921c34453bb350ed2728&source=constructorLink&amp;id=mymap&amp;lang=ru_RU&amp;apikey=<API-ключ>"></script>
+        </head>
+<!--        <body>-->
+<!--        <div id="mymap" style="width: 700px; height: 700px"></div>-->
+<!--        </body>-->
+    </div>
+</div>
+
+
+
+<footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+        <div class="col-12 col-md">
+            SkyStore
+            <small class="d-block mb-3 text-muted">&copy; 2015-2025</small>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Категории</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Рассылки</a></li>
+                <li><a class="text-muted" href="#">Телеграм боты</a></li>
+                <li><a class="text-muted" href="#">Полезные утилиты</a></li>
+                <li><a class="text-muted" href="#">Веб-приложения</a></li>
+                <li><a class="text-muted" href="#">Микросервисы</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>Дополнительно</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="/admin/">В админку</a></li>
+            </ul>
+        </div>
+        <div class="col-6 col-md">
+            <h5>О нас</h5>
+            <ul class="list-unstyled text-small">
+                <li><a class="text-muted" href="#">Контакты</a></li>
+            </ul>
+        </div>
+    </div>
+</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+</html>
